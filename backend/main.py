@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.routes.auth import router as auth_router
 from app.routes.generate import router as generate_router
+from app.routes.compile import router as compile_router
+from app.routes.builder import router as builder_router
 
 
 app = FastAPI(title="NeuroGen Compiler API")
@@ -14,9 +17,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # Routers
 app.include_router(auth_router)
 app.include_router(generate_router)
+app.include_router(compile_router)
+app.include_router(builder_router)
 
 
 @app.get("/")

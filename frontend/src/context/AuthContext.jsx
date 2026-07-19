@@ -11,11 +11,13 @@ export function AuthProvider({ children }) {
   const login = (userData, accessToken) => {
     setUser(userData);
     setToken(accessToken);
+    setAuthToken(accessToken);
   };
 
   const logout = () => {
     setUser(null);
     setToken(null);
+    setAuthToken(null);
   };
 
   return (
